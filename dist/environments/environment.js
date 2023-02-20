@@ -21,6 +21,7 @@ exports.default = {
         "https://fds-cqeo.onrender.com",
         "https://jimmymayta.github.io",
         "https://iebs.000webhostapp.com",
+        "http://localhost:5173"
     ],
     keysecret: "Y72YEATpY2ucABDsZ6vgtwrBv7yG2k",
 };
