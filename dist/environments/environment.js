@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     apiname: "api",
     apiversion: "3.2.1",
-    apibuild: "123",
+    apidate: "2023-02-20 12:23:01",
     apiport: Number(process.env.PORT) || 3000,
-    apiproduction: true,
+    apiproduction: false,
     database: "consejoministerialdatabase",
     mongodbdev: "mongodb://127.0.0.1:27017",
     mongodbpro: "mongodb+srv://iebsnal:xRSih9Jaxiumkvxd@cluster0.vv4yue2.mongodb.net",

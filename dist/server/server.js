@@ -35,7 +35,7 @@ class Server {
         });
     }
     middlewares() {
-        this.app.use((0, cors_1.default)({ origin: environment_1.default.urlappdev }));
+        this.app.use((0, cors_1.default)({ origin: environment_1.default.apiproduction ? environment_1.default.urlapppro : environment_1.default.urlappdev }));
         this.app.use(express_1.default.json({ limit: "100mb" }));
         this.app.use(express_1.default.urlencoded({ extended: false, limit: "100mb" }));
         this.app.use((0, express_fileupload_1.default)({
@@ -50,7 +50,7 @@ class Server {
     listen() {
         this.app.listen(this.port, () => {
             const url = environment_1.default.apiproduction
-                ? `${(0, url_1.urlapi)()}${api_1.default}`
+                ? `${(0, url_1.urlapi)()}:${this.port}${api_1.default}`
                 : `${(0, url_1.urlapi)()}:${this.port}${api_1.default}`;
             console.log(url);
         });

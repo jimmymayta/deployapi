@@ -91,10 +91,9 @@ const principalcontact = (req, res) => __awaiter(void 0, void 0, void 0, functio
 });
 exports.principalcontact = principalcontact;
 const principalinfo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(dataadmin_1.default);
     return res.json({
         dataadmin: dataadmin_1.default,
-        build: environment_1.default.apibuild
+        date: environment_1.default.apidate
     });
 });
 exports.principalinfo = principalinfo;

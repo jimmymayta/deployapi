@@ -23,7 +23,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     });
     if (member === null) {
         return res.json({
-            message: 'Contraseña incorrecta',
+            message: 'Contraseña incorrecta o usuario desactivado',
         });
     }
     const jwt = member !== null ? (0, jwt_1.JWTsign)(member.membercode) : null;
