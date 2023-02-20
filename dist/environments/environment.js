@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     apiname: "api",
     apiversion: "3.2.1",
+    apibuild: "123",
     apiport: Number(process.env.PORT) || 3000,
     apiproduction: true,
     database: "consejoministerialdatabase",
@@ -20,7 +21,7 @@ exports.default = {
         "https://fds-cqeo.onrender.com",
         "https://jimmymayta.github.io/iebs",
         "app.android.com/api-123",
-        "https://iebs.000webhostapp.com"
+        "https://iebs.000webhostapp.com",
     ],
     keysecret: "Y72YEATpY2ucABDsZ6vgtwrBv7yG2k",
 };

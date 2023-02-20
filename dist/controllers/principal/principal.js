@@ -23,6 +23,7 @@ const datanosotros_1 = __importDefault(require("../../data/datanosotros"));
 const datacontact_1 = __importDefault(require("../../data/datacontact"));
 const dataaccess_1 = __importDefault(require("../../data/dataaccess"));
 const dataadmin_1 = __importDefault(require("../../data/dataadmin"));
+const environment_1 = __importDefault(require("../../environments/environment"));
 const principalhome = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const [maintitle, maincomment, maindescription, maindetail, mainimage] = yield Promise.all([
         main_1.default.findOne({ maintitle: datamain_1.default.maintitle }),
@@ -93,6 +94,7 @@ const principalinfo = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     console.log(dataadmin_1.default);
     return res.json({
         dataadmin: dataadmin_1.default,
+        build: environment_1.default.apibuild
     });
 });
 exports.principalinfo = principalinfo;
