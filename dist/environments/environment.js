@@ -14,11 +14,13 @@ exports.default = {
         "http://localhost:5173",
         "http://localhost:4173",
         "http://127.0.0.1:5500",
+        "http://localhost",
     ],
     urlapppro: [
         "https://fds-cqeo.onrender.com",
         "https://jimmymayta.github.io/iebs",
         "app.android.com/api-123",
+        "https://iebs.000webhostapp.com"
     ],
     keysecret: "Y72YEATpY2ucABDsZ6vgtwrBv7yG2k",
 };

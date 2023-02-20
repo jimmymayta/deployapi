@@ -14,9 +14,9 @@ const DistrictChargeSchema = new mongoose_1.Schema({
         type: String,
         lowercase: true,
         trim: true,
-        unique: true,
+        unique: false,
         default: null,
-        required: [true, "District Charge Name"],
+        required: [false, "District Charge Name"],
     },
     idmember: {
         type: mongoose_1.Schema.Types.ObjectId,

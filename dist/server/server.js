@@ -17,7 +17,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const environment_1 = __importDefault(require("../environments/environment"));
-const routes_1 = require("../routes/routes");
+const routes_1 = __importDefault(require("../routes/routes"));
 const database_1 = __importDefault(require("../database/database"));
 const url_1 = require("../helpers/apiurl/url");
 const api_1 = __importDefault(require("../helpers/apiurl/api"));
@@ -27,27 +27,7 @@ class Server {
         this.port = port;
         this.connectiondatabase();
         this.middlewares();
-        this.routes([
-            { routepath: "principal", route: routes_1.principalroute },
-            { routepath: "admin", route: routes_1.adminroute },
-            { routepath: "login", route: routes_1.loginroute },
-            { routepath: "main", route: routes_1.mainroute },
-            { routepath: "nosotros", route: routes_1.nosotrosroute },
-            { routepath: "department", route: routes_1.departmentroute },
-            { routepath: "district", route: routes_1.districtroute },
-            { routepath: "mainimage", route: routes_1.mainimageroute },
-            { routepath: "advertising", route: routes_1.advertisingroute },
-            { routepath: "church", route: routes_1.churchroute },
-            { routepath: "churchactivity", route: routes_1.churchactivityroute },
-            { routepath: "churchimage", route: routes_1.churchimageroute },
-            { routepath: "churchmap", route: routes_1.churchmaproute },
-            { routepath: "churchministry", route: routes_1.churchministryroute },
-            { routepath: "churchcharge", route: routes_1.churchchargeroute },
-            { routepath: "member", route: routes_1.memberroute },
-            { routepath: "memberimage", route: routes_1.memberimageroute },
-            { routepath: "memberhistory", route: routes_1.memberhistoryroute },
-            { routepath: "membermap", route: routes_1.membermaproute },
-        ]);
+        this.routes(routes_1.default);
     }
     connectiondatabase() {
         return __awaiter(this, void 0, void 0, function* () {

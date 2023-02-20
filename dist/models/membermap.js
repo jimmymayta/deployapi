@@ -16,7 +16,7 @@ const MemberMapSchema = new mongoose_1.Schema({
         trim: true,
         unique: false,
         default: null,
-        required: [true, "Member Map Latitude"],
+        required: [false, "Member Map Latitude"],
     },
     membermaplongitude: {
         type: String,
@@ -24,7 +24,7 @@ const MemberMapSchema = new mongoose_1.Schema({
         trim: true,
         unique: false,
         default: null,
-        required: [true, "Member Map Longitude"],
+        required: [false, "Member Map Longitude"],
     },
     membermapzoom: {
         type: String,
@@ -32,7 +32,7 @@ const MemberMapSchema = new mongoose_1.Schema({
         trim: true,
         unique: false,
         default: null,
-        required: [true, "Member Map Zoom"],
+        required: [false, "Member Map Zoom"],
     },
     membermapmarkerlatitude: {
         type: String,
