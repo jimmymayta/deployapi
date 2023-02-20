@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "nodemon dist/app.js",
+    "dev:files": "concurrently \"npm run fonts\" \"npm run assets\"",
     "dev:start": "concurrently \"tsc -w\" \"npm run dev\" \"npm run fonts\"",
     "clean": "rm -fr dist",
     "fonts":"cp -r src/fonts dist/",

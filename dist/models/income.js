@@ -14,9 +14,9 @@ const IncomeSchema = new mongoose_1.Schema({
         type: String,
         lowercase: true,
         trim: true,
-        unique: true,
+        unique: false,
         default: null,
-        required: [true, "Income Name"],
+        required: [false, "Income Name"],
     },
     membermember: {
         type: mongoose_1.Schema.Types.ObjectId,

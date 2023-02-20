@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     apiname: "api",
     apiversion: "3.2.1",
-    apidate: "2023-02-20 12:23:01",
+    apidate: "2023-02-20 14:24:01",
     apiport: Number(process.env.PORT) || 3000,
-    apiproduction: false,
+    apiproduction: true,
     database: "consejoministerialdatabase",
     mongodbdev: "mongodb://127.0.0.1:27017",
     mongodbpro: "mongodb+srv://iebsnal:xRSih9Jaxiumkvxd@cluster0.vv4yue2.mongodb.net",
@@ -19,8 +19,7 @@ exports.default = {
     ],
     urlapppro: [
         "https://fds-cqeo.onrender.com",
-        "https://jimmymayta.github.io/iebs",
-        "app.android.com/api-123",
+        "https://jimmymayta.github.io",
         "https://iebs.000webhostapp.com",
     ],
     keysecret: "Y72YEATpY2ucABDsZ6vgtwrBv7yG2k",

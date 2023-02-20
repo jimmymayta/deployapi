@@ -14,9 +14,9 @@ const ExpenseSchema = new mongoose_1.Schema({
         type: String,
         lowercase: true,
         trim: true,
-        unique: true,
+        unique: false,
         default: null,
-        required: [true, "Expense Name"],
+        required: [false, "Expense Name"],
     },
     membermember: {
         type: mongoose_1.Schema.Types.ObjectId,
