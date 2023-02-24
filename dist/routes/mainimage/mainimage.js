@@ -12,4 +12,3 @@ router.post("/create", [token_1.default], mainimage_1.mainimagecreate);
 router.post("/update/:code", [token_1.default], mainimage_1.mainimageupdate);
 router.post("/delete/:code", [token_1.default], mainimage_1.mainimagedelete);
 exports.default = router;
-//# sourceMappingURL=mainimage.js.map

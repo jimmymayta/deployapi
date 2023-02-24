@@ -33,4 +33,3 @@ const districtcodeverify = (req, res, next) => __awaiter(void 0, void 0, void 0,
     next();
 });
 exports.districtcodeverify = districtcodeverify;
-//# sourceMappingURL=districtverify.js.map

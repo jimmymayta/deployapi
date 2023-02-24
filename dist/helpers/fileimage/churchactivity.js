@@ -56,4 +56,3 @@ const churchactivitydeletefile = (file, filedir) => __awaiter(void 0, void 0, vo
     }
 });
 exports.churchactivitydeletefile = churchactivitydeletefile;
-//# sourceMappingURL=churchactivity.js.map

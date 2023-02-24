@@ -57,4 +57,3 @@ const mainimagedeletefile = (file, filedir) => __awaiter(void 0, void 0, void 0,
     }
 });
 exports.mainimagedeletefile = mainimagedeletefile;
-//# sourceMappingURL=mainimage.js.map

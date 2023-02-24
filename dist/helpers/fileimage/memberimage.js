@@ -59,4 +59,3 @@ const memberimagedeletefile = (file, filedir) => __awaiter(void 0, void 0, void 
     }
 });
 exports.memberimagedeletefile = memberimagedeletefile;
-//# sourceMappingURL=memberimage.js.map

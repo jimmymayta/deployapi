@@ -13,4 +13,3 @@ router.post("/create", [token_1.default, districtverify_1.districtnameverify], d
 router.post("/update/:code", [token_1.default, districtverify_1.districtcodeverify, districtverify_1.districtnameverify], district_1.districtupdate);
 router.get("/delete/:code", [token_1.default, districtverify_1.districtcodeverify], district_1.districtdelete);
 exports.default = router;
-//# sourceMappingURL=district.js.map

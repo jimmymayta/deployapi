@@ -126,4 +126,3 @@ const ChurchImageSchema = new mongoose_1.Schema({
     },
 }, { collection: "churchimage" });
 exports.default = (0, mongoose_1.model)("ChurchImage", ChurchImageSchema);
-//# sourceMappingURL=churchimage.js.map

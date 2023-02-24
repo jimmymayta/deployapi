@@ -12,4 +12,3 @@ router.post("/create", [token_1.default], memberhistory_1.memberhistorycreate);
 router.post("/update/:code", [token_1.default], memberhistory_1.memberhistoryupdate);
 router.get("/delete/:code", [token_1.default], memberhistory_1.memberhistorydelete);
 exports.default = router;
-//# sourceMappingURL=memberhistory.js.map

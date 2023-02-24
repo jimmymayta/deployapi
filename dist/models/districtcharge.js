@@ -103,4 +103,3 @@ const DistrictChargeSchema = new mongoose_1.Schema({
     },
 }, { collection: "districtcharge" });
 exports.default = (0, mongoose_1.model)("DistrictCharge", DistrictChargeSchema);
-//# sourceMappingURL=districtcharge.js.map

@@ -126,4 +126,3 @@ const MemberMapSchema = new mongoose_1.Schema({
     },
 }, { collection: "membermap" });
 exports.default = (0, mongoose_1.model)("MemberMap", MemberMapSchema);
-//# sourceMappingURL=membermap.js.map

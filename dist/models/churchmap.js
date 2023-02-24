@@ -126,4 +126,3 @@ const ChurchMapSchema = new mongoose_1.Schema({
     },
 }, { collection: "churchmap" });
 exports.default = (0, mongoose_1.model)("ChurchMap", ChurchMapSchema);
-//# sourceMappingURL=churchmap.js.map

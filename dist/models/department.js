@@ -93,4 +93,3 @@ const DepartmentSchema = new mongoose_1.Schema({
     },
 }, { collection: "department" });
 exports.default = (0, mongoose_1.model)("Department", DepartmentSchema);
-//# sourceMappingURL=department.js.map

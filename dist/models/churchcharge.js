@@ -103,4 +103,3 @@ const ChurchChargeSchema = new mongoose_1.Schema({
     },
 }, { collection: "churchcharge" });
 exports.default = (0, mongoose_1.model)("ChurchCharge", ChurchChargeSchema);
-//# sourceMappingURL=churchcharge.js.map

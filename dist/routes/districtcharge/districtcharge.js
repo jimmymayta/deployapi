@@ -12,4 +12,3 @@ router.post("/create", token_1.default, districtcharge_1.districtchargecreate);
 router.post("/update/:code", token_1.default, districtcharge_1.districtchargeupdate);
 router.get("/delete/:code", token_1.default, districtcharge_1.districtchargedelete);
 exports.default = router;
-//# sourceMappingURL=districtcharge.js.map

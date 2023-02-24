@@ -10,13 +10,29 @@ const MemberDocumentSchema = new mongoose_1.Schema({
         default: null,
         required: [true, "Member Document Code"],
     },
+    memberdocumenttitle: {
+        type: String,
+        lowercase: true,
+        trim: true,
+        unique: false,
+        default: null,
+        required: [false, "Member Document Title"],
+    },
+    memberdocumentdescription: {
+        type: String,
+        lowercase: true,
+        trim: true,
+        unique: false,
+        default: null,
+        required: [false, "Member Document Description"],
+    },
     memberdocumentnumber: {
         type: String,
         lowercase: true,
         trim: true,
         unique: false,
         default: null,
-        required: [true, "Member Document Number"],
+        required: [false, "Member Document Number"],
     },
     memberdocumentname: {
         type: String,
@@ -126,4 +142,3 @@ const MemberDocumentSchema = new mongoose_1.Schema({
     },
 }, { collection: "memberdocument" });
 exports.default = (0, mongoose_1.model)("MemberDocument", MemberDocumentSchema);
-//# sourceMappingURL=memberdocument.js.map

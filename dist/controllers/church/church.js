@@ -74,4 +74,3 @@ const churchdelete = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     });
 });
 exports.churchdelete = churchdelete;
-//# sourceMappingURL=church.js.map

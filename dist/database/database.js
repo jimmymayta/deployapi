@@ -13,13 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const environment_1 = __importDefault(require("../environments/environment"));
+const env_1 = __importDefault(require("../environments/env"));
 const databaseconnection = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const mongodb = environment_1.default.apiproduction ? environment_1.default.mongodbpro : environment_1.default.mongodbdev;
-        const database = environment_1.default.database;
         mongoose_1.default.set("strictQuery", false);
-        yield mongoose_1.default.connect(`${mongodb}/${database}`);
+        yield mongoose_1.default.connect(`${env_1.default.uri}/${env_1.default.database}`);
         console.log("Database Online");
     }
     catch (error) {
@@ -27,4 +25,3 @@ const databaseconnection = () => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.default = databaseconnection;
-//# sourceMappingURL=database.js.map

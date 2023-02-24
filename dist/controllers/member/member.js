@@ -24,14 +24,16 @@ const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
 const member_2 = require("../../helpers/filedocument/member");
 const membercredential_1 = require("../../helpers/filedocument/membercredential");
-const dataaccess_1 = __importDefault(require("../../data/dataaccess"));
+const dataamemberccess_1 = require("../../data/dataamemberccess");
 const folder_1 = require("../../libraries/folder");
-const url_1 = require("../../helpers/apiurl/url");
+const env_1 = __importDefault(require("../../environments/env"));
 const qrcode_1 = __importDefault(require("../../helpers/qrcode/qrcode"));
+const accessverify_1 = require("../../helpers/access/accessverify");
 const member = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const memberresult = yield member_1.default.find({ state: "activated" });
     return res.json({
         member: memberresult,
+        tab: yield (0, accessverify_1.accessverify)(req.code || ""),
     });
 });
 exports.member = member;
@@ -49,24 +51,17 @@ const membercreate = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         birthdate: birthdate ? birthdate : null,
         married: married ? married : null,
         country: country ? country : null,
-        iddepartment: iddepartment
-            ? yield (0, idcode_1.default)(department_1.default, { departmentcode: iddepartment })
-            : null,
+        iddepartment: iddepartment ? yield (0, idcode_1.default)(department_1.default, { departmentcode: iddepartment }) : null,
         address: address ? address : null,
         datestart: datestart ? datestart : null,
         dateend: dateend ? dateend : null,
-        idchurch: idchurch
-            ? yield (0, idcode_1.default)(church_1.default, { churchcode: idchurch })
-            : null,
-        iddistrict: iddistrict
-            ? yield (0, idcode_1.default)(district_1.default, { districtcode: iddistrict })
-            : null,
+        idchurch: idchurch ? yield (0, idcode_1.default)(church_1.default, { churchcode: idchurch }) : null,
+        iddistrict: iddistrict ? yield (0, idcode_1.default)(district_1.default, { districtcode: iddistrict }) : null,
         membermember: yield (0, idcode_1.default)(member_1.default, { membercode: req.code }),
         datecreate: (0, dategenerate_1.default)(),
     });
     const memberresult = yield membermodel.save();
-    const accessdata = dataaccess_1.default.map((e) => {
-        console.log(e);
+    const accessdata = dataamemberccess_1.accessname.map((e) => {
         return {
             memberaccesscode: (0, codegenerate_1.default)(),
             memberaccessnumber: e.number,
@@ -74,14 +69,14 @@ const membercreate = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             memberaccesscreate: true,
             memberaccessupdate: false,
             memberaccessdelete: true,
+            memberaccesslevel: "personal",
             idmember: memberresult._id,
         };
     });
-    console.log(accessdata);
-    yield memberaccess_1.default.insertMany(accessdata);
+    yield memberaccess_1.default.insertMany(accessdata.filter((e) => [4, 5].includes(e.memberaccessnumber)));
     (0, folder_1.folder)("/images/memberqrcode");
     const qrname = (0, codegenerate_1.default)();
-    const qrdata = `${(0, url_1.urlapi)()}/code/${memberresult.membercode}`;
+    const qrdata = `${env_1.default.urlapi}/code/${memberresult.membercode}`;
     const { imageextension, imagewidth, imageheight } = yield (0, qrcode_1.default)(qrname, qrdata);
     yield memberqrcode_1.default.insertMany({
         memberqrcodecode: (0, codegenerate_1.default)(),
@@ -189,6 +184,7 @@ const membergeneratecredential = (req, res) => __awaiter(void 0, void 0, void 0,
             $unwind: "$memberqrcode",
         },
     ]);
+    console.log(memberresult);
     let pathfile = "";
     if (memberresult.length > 0) {
         pathfile = yield (0, membercredential_1.membercredential)(memberresult[0].names, memberresult[0].memberimage.memberimagefile, memberresult[0].memberqrcode.memberqrcodefile, "temp");
@@ -198,4 +194,3 @@ const membergeneratecredential = (req, res) => __awaiter(void 0, void 0, void 0,
     });
 });
 exports.membergeneratecredential = membergeneratecredential;
-//# sourceMappingURL=member.js.map

@@ -149,4 +149,3 @@ const AdvertisingSchema = new mongoose_1.Schema({
     },
 }, { collection: "advertising" });
 exports.default = (0, mongoose_1.model)("Advertising", AdvertisingSchema);
-//# sourceMappingURL=advertising.js.map

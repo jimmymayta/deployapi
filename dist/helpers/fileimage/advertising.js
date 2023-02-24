@@ -57,4 +57,3 @@ const advertisingdeletefile = (file, filedir) => __awaiter(void 0, void 0, void 
     }
 });
 exports.advertisingdeletefile = advertisingdeletefile;
-//# sourceMappingURL=advertising.js.map

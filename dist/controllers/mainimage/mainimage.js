@@ -99,4 +99,3 @@ const mainimagedelete = (req, res) => __awaiter(void 0, void 0, void 0, function
     });
 });
 exports.mainimagedelete = mainimagedelete;
-//# sourceMappingURL=mainimage.js.map

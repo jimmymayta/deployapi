@@ -21,4 +21,3 @@ const nosotros = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     });
 });
 exports.nosotros = nosotros;
-//# sourceMappingURL=nosotros.js.map

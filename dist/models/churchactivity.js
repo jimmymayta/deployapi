@@ -142,4 +142,3 @@ const ChurchActivitySchema = new mongoose_1.Schema({
     },
 }, { collection: "churchactivity" });
 exports.default = (0, mongoose_1.model)("ChurchActivity", ChurchActivitySchema);
-//# sourceMappingURL=churchactivity.js.map

@@ -12,4 +12,3 @@ router.post("/create", token_1.default, department_1.departmentcreate);
 router.post("/update/:code", token_1.default, department_1.departmentupdate);
 router.get("/delete/:code", token_1.default, department_1.departmentdelete);
 exports.default = router;
-//# sourceMappingURL=department.js.map

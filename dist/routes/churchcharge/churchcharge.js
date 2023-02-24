@@ -12,4 +12,3 @@ router.post("/create", token_1.default, churchcharge_1.churchchargecreate);
 router.post("/update/:code", token_1.default, churchcharge_1.churchchargeupdate);
 router.get("/delete/:code", token_1.default, churchcharge_1.churchchargedelete);
 exports.default = router;
-//# sourceMappingURL=churchcharge.js.map

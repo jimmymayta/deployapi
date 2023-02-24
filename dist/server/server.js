@@ -16,13 +16,11 @@ const path_1 = __importDefault(require("path"));
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
-const environment_1 = __importDefault(require("../environments/environment"));
+const env_1 = __importDefault(require("../environments/env"));
 const routes_1 = __importDefault(require("../routes/routes"));
 const database_1 = __importDefault(require("../database/database"));
-const url_1 = require("../helpers/apiurl/url");
-const api_1 = __importDefault(require("../helpers/apiurl/api"));
 class Server {
-    constructor(app = (0, express_1.default)(), port = environment_1.default.apiport) {
+    constructor(app = (0, express_1.default)(), port = env_1.default.apiport) {
         this.app = app;
         this.port = port;
         this.connectiondatabase();
@@ -35,7 +33,7 @@ class Server {
         });
     }
     middlewares() {
-        this.app.use((0, cors_1.default)({ origin: environment_1.default.apiproduction ? environment_1.default.urlapppro : environment_1.default.urlappdev }));
+        this.app.use((0, cors_1.default)({ origin: env_1.default.urlapp }));
         this.app.use(express_1.default.json({ limit: "100mb" }));
         this.app.use(express_1.default.urlencoded({ extended: false, limit: "100mb" }));
         this.app.use((0, express_fileupload_1.default)({
@@ -45,16 +43,13 @@ class Server {
         }));
     }
     routes(route) {
-        route.forEach((e) => this.app.use(`${api_1.default}/${e.routepath}`, e.route));
+        const url = `/${env_1.default.apiname}/${env_1.default.apiversion}/`;
+        route.forEach((e) => this.app.use(`${url}${e.routepath}`, e.route));
     }
     listen() {
         this.app.listen(this.port, () => {
-            const url = environment_1.default.apiproduction
-                ? `${(0, url_1.urlapi)()}:${this.port}${api_1.default}`
-                : `${(0, url_1.urlapi)()}:${this.port}${api_1.default}`;
-            console.log(url);
+            console.log(`${env_1.default.urlapi}:${env_1.default.apiport}`);
         });
     }
 }
 exports.default = Server;
-//# sourceMappingURL=server.js.map

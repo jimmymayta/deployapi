@@ -46,4 +46,3 @@ exports.membermember = membermember;
 const membercreate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const respuesta = req.body;
 });
-//# sourceMappingURL=membermember.js.map

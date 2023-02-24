@@ -35,4 +35,3 @@ const qrcode = (name, data) => __awaiter(void 0, void 0, void 0, function* () {
     return { imageextension, imagewidth, imageheight };
 });
 exports.default = qrcode;
-//# sourceMappingURL=qrcode.js.map

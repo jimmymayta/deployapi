@@ -103,4 +103,3 @@ const IncomeExpenseSchema = new mongoose_1.Schema({
     },
 }, { collection: "incomeexpense" });
 exports.default = (0, mongoose_1.model)("IncomeExpense", IncomeExpenseSchema);
-//# sourceMappingURL=incomeexpense.js.map

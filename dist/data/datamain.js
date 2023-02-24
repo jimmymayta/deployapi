@@ -6,4 +6,3 @@ exports.default = {
     maindescription: "maindescription",
     maindetail: "maindetail",
 };
-//# sourceMappingURL=datamain.js.map

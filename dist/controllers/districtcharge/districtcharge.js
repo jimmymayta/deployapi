@@ -92,4 +92,3 @@ const districtchargedelete = (req, res) => __awaiter(void 0, void 0, void 0, fun
     });
 });
 exports.districtchargedelete = districtchargedelete;
-//# sourceMappingURL=districtcharge.js.map

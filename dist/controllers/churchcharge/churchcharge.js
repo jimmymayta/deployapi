@@ -88,4 +88,3 @@ const churchchargedelete = (req, res) => __awaiter(void 0, void 0, void 0, funct
     });
 });
 exports.churchchargedelete = churchchargedelete;
-//# sourceMappingURL=churchcharge.js.map

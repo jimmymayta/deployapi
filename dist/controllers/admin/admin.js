@@ -20,10 +20,10 @@ const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const qrcode_1 = __importDefault(require("../../helpers/qrcode/qrcode"));
 const folder_1 = require("../../libraries/folder");
 const admincode_1 = __importDefault(require("../../libraries/admincode"));
-const dataaccess_1 = __importDefault(require("../../data/dataaccess"));
+const dataamemberccess_1 = require("../../data/dataamemberccess");
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const random_1 = require("../../tools/random");
-const url_1 = require("../../helpers/apiurl/url");
+const env_1 = __importDefault(require("../../environments/env"));
 const admin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { code } = req.params;
     if (!(0, admincode_1.default)(code)) {
@@ -39,7 +39,7 @@ const admin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         datecreate: (0, dategenerate_1.default)(),
     });
     const memberdata = yield modelmember.save();
-    const accessdata = dataaccess_1.default.map((e) => {
+    const accessdata = dataamemberccess_1.accessname.map((e) => {
         return {
             memberaccesscode: (0, codegenerate_1.default)(),
             memberaccessnumber: e.number,
@@ -47,13 +47,14 @@ const admin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             memberaccesscreate: true,
             memberaccessupdate: true,
             memberaccessdelete: true,
+            memberaccesslevel: "national",
             idmember: memberdata._id,
         };
     });
     yield memberaccess_1.default.insertMany(accessdata);
     (0, folder_1.folder)("images/memberqrcode");
     const qrname = (0, codegenerate_1.default)();
-    const qrdata = `${(0, url_1.urlapi)()}/code/${memberdata.membercode}`;
+    const qrdata = `${env_1.default.urlapi}/code/${memberdata.membercode}`;
     const { imageextension, imagewidth, imageheight } = yield (0, qrcode_1.default)(qrname, qrdata);
     yield memberqrcode_1.default.insertMany({
         memberqrcodecode: (0, codegenerate_1.default)(),
@@ -68,4 +69,3 @@ const admin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.json({ ci: memberdata.identitycard });
 });
 exports.admin = admin;
-//# sourceMappingURL=admin.js.map

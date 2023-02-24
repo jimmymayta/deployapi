@@ -134,4 +134,3 @@ const MemberQRCodeSchema = new mongoose_1.Schema({
     },
 }, { collection: "memberqrcode" });
 exports.default = (0, mongoose_1.model)("MemberQRCode", MemberQRCodeSchema);
-//# sourceMappingURL=memberqrcode.js.map

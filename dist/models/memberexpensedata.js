@@ -112,4 +112,3 @@ const MemberExpenseDataSchema = new mongoose_1.Schema({
     },
 }, { collection: "memberexpensedata" });
 exports.default = (0, mongoose_1.model)("MemberExpenseData", MemberExpenseDataSchema);
-//# sourceMappingURL=memberexpensedata.js.map

@@ -6,4 +6,3 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("./server/server"));
 const app = new server_1.default();
 app.listen();
-//# sourceMappingURL=app.js.map

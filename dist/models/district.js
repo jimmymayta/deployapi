@@ -85,4 +85,3 @@ const DistrictSchema = new mongoose_1.Schema({
     },
 }, { collection: "district" });
 exports.default = (0, mongoose_1.model)("District", DistrictSchema);
-//# sourceMappingURL=district.js.map

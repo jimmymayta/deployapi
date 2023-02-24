@@ -94,4 +94,3 @@ const ChurchMinistrySchema = new mongoose_1.Schema({
     },
 }, { collection: "churchministry" });
 exports.default = (0, mongoose_1.model)("ChurchMinistry", ChurchMinistrySchema);
-//# sourceMappingURL=churchministry.js.map

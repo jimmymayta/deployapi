@@ -6,4 +6,3 @@ exports.default = {
     nosotrosdescription: "nosotrosdescription",
     nosotrosdetail: "nosotrosdetail",
 };
-//# sourceMappingURL=datanosotros.js.map

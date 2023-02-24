@@ -141,4 +141,3 @@ const MainImageSchema = new mongoose_1.Schema({
     },
 }, { collection: "mainimage" });
 exports.default = (0, mongoose_1.model)("MainImage", MainImageSchema);
-//# sourceMappingURL=mainimage.js.map

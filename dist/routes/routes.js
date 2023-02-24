@@ -24,6 +24,13 @@ const churchministry_1 = __importDefault(require("./churchministry/churchministr
 const churchcharge_1 = __importDefault(require("./churchcharge/churchcharge"));
 const districtcharge_1 = __importDefault(require("./districtcharge/districtcharge"));
 const income_1 = __importDefault(require("./income/income"));
+const expense_1 = __importDefault(require("./expense/expense"));
+const memberincome_1 = __importDefault(require("./memberincome/memberincome"));
+const memberincomedata_1 = __importDefault(require("./memberincomedata/memberincomedata"));
+const memberexpense_1 = __importDefault(require("./memberexpense/memberexpense"));
+const memberexpensedata_1 = __importDefault(require("./memberexpensedata/memberexpensedata"));
+const incomeexpense_1 = __importDefault(require("./incomeexpense/incomeexpense"));
+const memberdocument_1 = __importDefault(require("./memberdocument/memberdocument"));
 exports.default = [
     { routepath: "principal", route: principal_1.default },
     { routepath: "admin", route: admin_1.default },
@@ -44,7 +51,13 @@ exports.default = [
     { routepath: "memberimage", route: memberimage_1.default },
     { routepath: "memberhistory", route: memberhistory_1.default },
     { routepath: "membermap", route: membermap_1.default },
+    { routepath: "memberdocument", route: memberdocument_1.default },
     { routepath: "districtcharge", route: districtcharge_1.default },
     { routepath: "income", route: income_1.default },
+    { routepath: "expense", route: expense_1.default },
+    { routepath: "memberincome", route: memberincome_1.default },
+    { routepath: "memberincomedata", route: memberincomedata_1.default },
+    { routepath: "memberexpense", route: memberexpense_1.default },
+    { routepath: "memberexpensedata", route: memberexpensedata_1.default },
+    { routepath: "incomeexpense", route: incomeexpense_1.default },
 ];
-//# sourceMappingURL=routes.js.map

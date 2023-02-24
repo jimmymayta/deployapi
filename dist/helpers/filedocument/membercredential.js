@@ -22,9 +22,9 @@ const membercredential = (names, memberimage, memberqrcode, pathdir) => __awaite
     const imagenmember = (0, path_1.join)(`${__dirname}/../../images/memberimage/${memberimage}`);
     const imagenqrcode = (0, path_1.join)(`${__dirname}/../../images/memberqrcode/${memberqrcode}`);
     const pathfile = (0, path_1.join)(`${__dirname}/../../${pathdir}/${(0, codegenerate_1.default)()}.pdf`);
-    const imagecredential = (0, path_1.join)(`${__dirname}/../../assets/c1.png`);
-    const LatoRegular = (0, path_1.join)(`${__dirname}/../../fonts/Lato-Regular.ttf`);
-    const LatoBold = (0, path_1.join)(`${__dirname}/../../fonts/Lato-Bold.ttf`);
+    const imagecredential = (0, path_1.join)(`${__dirname}/../../files/images/c1.png`);
+    const LatoRegular = (0, path_1.join)(`${__dirname}/../../files/fonts/Lato-Regular.ttf`);
+    const LatoBold = (0, path_1.join)(`${__dirname}/../../files/fonts/Lato-Bold.ttf`);
     (0, folder_1.folder)(pathdir);
     const doc = new pdfkit_1.default({ size: "LETTER" });
     doc.pipe(fs_1.default.createWriteStream(pathfile));
@@ -40,4 +40,3 @@ const membercredential = (names, memberimage, memberqrcode, pathdir) => __awaite
     return pathfile;
 });
 exports.membercredential = membercredential;
-//# sourceMappingURL=membercredential.js.map

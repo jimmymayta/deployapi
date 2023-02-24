@@ -12,4 +12,3 @@ router.post("/create", token_1.default, churchmap_1.churchmapcreate);
 router.post("/update/:code", token_1.default, churchmap_1.churchmapupdate);
 router.get("/delete/:code", token_1.default, churchmap_1.churchmapdelete);
 exports.default = router;
-//# sourceMappingURL=churchmap.js.map

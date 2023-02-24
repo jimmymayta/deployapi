@@ -6,4 +6,3 @@ exports.default = {
     infodescription: "infodescription",
     infodetail: "infodetail",
 };
-//# sourceMappingURL=datainfo.js.map

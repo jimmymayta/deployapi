@@ -6,4 +6,3 @@ exports.default = {
     contactdescription: "contactdescription",
     contactdetail: "contactdetail",
 };
-//# sourceMappingURL=datacontact.js.map

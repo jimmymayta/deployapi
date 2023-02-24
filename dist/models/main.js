@@ -14,17 +14,17 @@ const MainSchema = new mongoose_1.Schema({
         type: String,
         lowercase: true,
         trim: true,
-        unique: true,
+        unique: false,
         default: null,
-        required: [true, "Main Number"],
+        required: [false, "Main Number"],
     },
     mainname: {
         type: String,
         lowercase: true,
         trim: true,
-        unique: true,
+        unique: false,
         default: null,
-        required: [true, "Main Name"],
+        required: [false, "Main Name"],
     },
     maindata: {
         type: String,
@@ -101,4 +101,3 @@ const MainSchema = new mongoose_1.Schema({
     },
 }, { collection: "main" });
 exports.default = (0, mongoose_1.model)("Main", MainSchema);
-//# sourceMappingURL=main.js.map

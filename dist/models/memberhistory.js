@@ -110,4 +110,3 @@ const MemberHistorySchema = new mongoose_1.Schema({
     },
 }, { collection: "memberhistory" });
 exports.default = (0, mongoose_1.model)("MemberHistory", MemberHistorySchema);
-//# sourceMappingURL=memberhistory.js.map

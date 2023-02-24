@@ -112,4 +112,3 @@ const MemberIncomeDataSchema = new mongoose_1.Schema({
     },
 }, { collection: "memberincomedata" });
 exports.default = (0, mongoose_1.model)("MemberIncomeData", MemberIncomeDataSchema);
-//# sourceMappingURL=memberincomedata.js.map

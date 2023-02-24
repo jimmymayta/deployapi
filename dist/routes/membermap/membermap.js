@@ -12,4 +12,3 @@ router.post("/create", [token_1.default], membermap_1.membermapcreate);
 router.post("/update/:code", [token_1.default], membermap_1.membermapupdate);
 router.get("/delete/:code", [token_1.default], membermap_1.membermapdelete);
 exports.default = router;
-//# sourceMappingURL=membermap.js.map

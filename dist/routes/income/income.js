@@ -12,4 +12,3 @@ router.post("/create", token_1.default, income_1.incomecreate);
 router.post("/update/:code", token_1.default, income_1.incomeupdate);
 router.get("/delete/:code", token_1.default, income_1.incomedelete);
 exports.default = router;
-//# sourceMappingURL=income.js.map

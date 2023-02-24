@@ -88,4 +88,3 @@ const memberimagedelete = (req, res) => __awaiter(void 0, void 0, void 0, functi
     });
 });
 exports.memberimagedelete = memberimagedelete;
-//# sourceMappingURL=memberimage.js.map

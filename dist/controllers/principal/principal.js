@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.principalinfo = exports.principalcontact = exports.principalnosotros = exports.principalchurch = exports.principalhome = void 0;
+exports.principalinfo = exports.principalcontact = exports.principalnosotros = exports.principalchurch = exports.principalmain = void 0;
 const path_1 = __importDefault(require("path"));
 const main_1 = __importDefault(require("../../models/main"));
 const mainimage_1 = __importDefault(require("../../models/mainimage"));
@@ -21,29 +21,28 @@ const contact_1 = __importDefault(require("../../models/contact"));
 const datamain_1 = __importDefault(require("../../data/datamain"));
 const datanosotros_1 = __importDefault(require("../../data/datanosotros"));
 const datacontact_1 = __importDefault(require("../../data/datacontact"));
-const dataaccess_1 = __importDefault(require("../../data/dataaccess"));
+const dataamemberccess_1 = require("../../data/dataamemberccess");
 const dataadmin_1 = __importDefault(require("../../data/dataadmin"));
-const environment_1 = __importDefault(require("../../environments/environment"));
-const principalhome = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const env_1 = __importDefault(require("../../environments/env"));
+const principalmain = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const [maintitle, maincomment, maindescription, maindetail, mainimage] = yield Promise.all([
-        main_1.default.findOne({ maintitle: datamain_1.default.maintitle }),
-        main_1.default.findOne({ maincomment: datamain_1.default.maincomment }),
-        main_1.default.findOne({ maindescription: datamain_1.default.maindescription }),
-        main_1.default.findOne({ maindetail: datamain_1.default.maindetail }),
+        main_1.default.findOne({ mainname: datamain_1.default.maintitle }),
+        main_1.default.findOne({ mainname: datamain_1.default.maincomment }),
+        main_1.default.findOne({ mainname: datamain_1.default.maindescription }),
+        main_1.default.findOne({ mainname: datamain_1.default.maindetail }),
         mainimage_1.default.find(),
     ]);
     return res.json({
-        tab: dataaccess_1.default
-            .filter((e) => [1, 2, 3].includes(e.number))
-            .map((e) => e.name),
-        maintitle: 'IGLESIA EVANGELICA BOLIVIANA DE SANTIDAD',
-        maincomment,
-        maindescription,
-        maindetail,
+        maintitle: maintitle ? maintitle.maindata : "",
+        maincomment: maincomment ? maincomment.maindata : "",
+        maindescription: maindescription ? maindescription.maindata : "",
+        maindetail: maindetail ? maindetail.maindata : "",
         mainimage: mainimage.map((e) => path_1.default.join(__dirname, "../../images/mainimage/", e.mainimagefile)),
+        tab: ["principalmain", "principalnosotros", "principalcontact"],
+        member: false,
     });
 });
-exports.principalhome = principalhome;
+exports.principalmain = principalmain;
 const principalchurch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.json({
         maintitle: "Iglesia",
@@ -60,7 +59,7 @@ const principalnosotros = (req, res) => __awaiter(void 0, void 0, void 0, functi
         nosotros_1.default.findOne({ nosotrosdetail: datanosotros_1.default.nosotrosdetail }),
     ]);
     return res.json({
-        tab: dataaccess_1.default
+        tab: dataamemberccess_1.accessname
             .filter((e) => [1, 2, 3].includes(e.number))
             .map((e) => e.name),
         nosotrostitle,
@@ -80,7 +79,7 @@ const principalcontact = (req, res) => __awaiter(void 0, void 0, void 0, functio
         contact_1.default.findOne({ contactdetail: datacontact_1.default.contactdetail }),
     ]);
     return res.json({
-        tab: dataaccess_1.default
+        tab: dataamemberccess_1.accessname
             .filter((e) => [1, 2, 3].includes(e.number))
             .map((e) => e.name),
         contacttitle,
@@ -93,8 +92,7 @@ exports.principalcontact = principalcontact;
 const principalinfo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.json({
         dataadmin: dataadmin_1.default,
-        date: environment_1.default.apidate
+        date: env_1.default.apibuild,
     });
 });
 exports.principalinfo = principalinfo;
-//# sourceMappingURL=principal.js.map

@@ -44,4 +44,3 @@ exports.default = [
         text: "si se humillare mi pueblo, sobre el cual mi nombre es invocado, y oraren, y buscaren mi rostro, y se convirtieren de sus malos caminos; entonces yo oiré desde los cielos, y perdonaré sus pecados, y sanaré su tierra.",
     },
 ];
-//# sourceMappingURL=databiblicaltext.js.map

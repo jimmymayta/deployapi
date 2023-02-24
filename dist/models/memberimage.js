@@ -126,4 +126,3 @@ const MemberImageSchema = new mongoose_1.Schema({
     },
 }, { collection: "memberimage" });
 exports.default = (0, mongoose_1.model)("MemberImage", MemberImageSchema);
-//# sourceMappingURL=memberimage.js.map

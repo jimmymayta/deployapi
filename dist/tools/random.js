@@ -14,4 +14,3 @@ const randominteger = () => {
     return chance.string({ length: 8, pool: "123456789" });
 };
 exports.randominteger = randominteger;
-//# sourceMappingURL=random.js.map

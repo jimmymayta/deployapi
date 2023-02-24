@@ -101,4 +101,3 @@ const NosotrosSchema = new mongoose_1.Schema({
     },
 }, { collection: "nosotros" });
 exports.default = (0, mongoose_1.model)("Nosotros", NosotrosSchema);
-//# sourceMappingURL=nosotros.js.map

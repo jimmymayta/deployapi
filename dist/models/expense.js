@@ -85,4 +85,3 @@ const ExpenseSchema = new mongoose_1.Schema({
     },
 }, { collection: "expense" });
 exports.default = (0, mongoose_1.model)("Expense", ExpenseSchema);
-//# sourceMappingURL=expense.js.map

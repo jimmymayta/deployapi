@@ -12,4 +12,3 @@ router.post("/create", token_1.default, advertising_1.advertisingcreate);
 router.post("/update/:code", token_1.default, advertising_1.advertisingupdate);
 router.get("/delete/:code", token_1.default, advertising_1.advertisingdelete);
 exports.default = router;
-//# sourceMappingURL=advertising.js.map

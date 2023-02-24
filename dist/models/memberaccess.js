@@ -48,7 +48,15 @@ const MemberAccessSchema = new mongoose_1.Schema({
         trim: true,
         unique: false,
         default: false,
-        required: [true, "Permit Delete"],
+        required: [true, "Permit Access Delete"],
+    },
+    memberaccesslevel: {
+        type: String,
+        lowercase: true,
+        trim: true,
+        unique: false,
+        default: false,
+        required: [true, "Member Access Level"],
     },
     idmember: {
         type: mongoose_1.Schema.Types.ObjectId,
@@ -126,4 +134,3 @@ const MemberAccessSchema = new mongoose_1.Schema({
     },
 }, { collection: "memberaccess" });
 exports.default = (0, mongoose_1.model)("MemberAccess", MemberAccessSchema);
-//# sourceMappingURL=memberaccess.js.map

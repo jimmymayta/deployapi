@@ -93,4 +93,3 @@ const membermapdelete = (req, res) => __awaiter(void 0, void 0, void 0, function
     });
 });
 exports.membermapdelete = membermapdelete;
-//# sourceMappingURL=membermap.js.map

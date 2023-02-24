@@ -101,4 +101,3 @@ const ContactSchema = new mongoose_1.Schema({
     },
 }, { collection: "contact" });
 exports.default = (0, mongoose_1.model)("Contact", ContactSchema);
-//# sourceMappingURL=contact.js.map

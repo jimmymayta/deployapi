@@ -105,4 +105,3 @@ const advertisingdelete = (req, res) => __awaiter(void 0, void 0, void 0, functi
     });
 });
 exports.advertisingdelete = advertisingdelete;
-//# sourceMappingURL=advertising.js.map

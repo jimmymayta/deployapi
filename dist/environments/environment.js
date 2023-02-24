@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     apiname: "api",
     apiversion: "3.2.1",
-    apidate: "2023-02-20 14:24:01",
-    apiport: Number(process.env.PORT) || 3000,
+    apibuild: "106",
+    apiport: 3000,
     apiproduction: true,
     database: "consejoministerialdatabase",
-    mongodbdev: "mongodb://127.0.0.1:27017",
-    mongodbpro: "mongodb+srv://iebsnal:xRSih9Jaxiumkvxd@cluster0.vv4yue2.mongodb.net",
+    uridev: "mongodb://127.0.0.1:27018",
+    uripro: "mongodb+srv://iebsnal:xRSih9Jaxiumkvxd@cluster0.vv4yue2.mongodb.net",
     urlapidev: "http://localhost",
     urlapipro: "https://api-consejo-ministerial.onrender.com",
     urlappdev: [
@@ -21,8 +21,7 @@ exports.default = {
         "https://fds-cqeo.onrender.com",
         "https://jimmymayta.github.io",
         "https://iebs.000webhostapp.com",
-        "http://localhost:5173"
+        "http://localhost:5173",
     ],
-    keysecret: "Y72YEATpY2ucABDsZ6vgtwrBv7yG2k",
+    keysecret: 'Tm2TNR&7x7%e59Bwq$X'
 };
-//# sourceMappingURL=environment.js.map

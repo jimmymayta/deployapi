@@ -12,4 +12,3 @@ router.post("/create", token_1.default, churchimage_1.churchimagecreate);
 router.post("/update/:code", token_1.default, churchimage_1.churchimageupdate);
 router.get("/delete/:code", token_1.default, churchimage_1.churchimagedelete);
 exports.default = router;
-//# sourceMappingURL=churchimage.js.map

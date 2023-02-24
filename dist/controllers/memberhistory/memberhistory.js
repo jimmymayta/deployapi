@@ -88,4 +88,3 @@ const memberhistorydelete = (req, res) => __awaiter(void 0, void 0, void 0, func
     });
 });
 exports.memberhistorydelete = memberhistorydelete;
-//# sourceMappingURL=memberhistory.js.map

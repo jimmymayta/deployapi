@@ -20,8 +20,8 @@ const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const pdfkit_1 = __importDefault(require("pdfkit"));
 const memberpdf = (names, filedir) => __awaiter(void 0, void 0, void 0, function* () {
     const pathfile = (0, path_1.join)(`${__dirname}/../../${filedir}/${(0, codegenerate_1.default)()}.pdf`);
-    const LatoRegular = (0, path_1.join)(`${__dirname}/../../fonts/Lato-Regular.ttf`);
-    const LatoBold = (0, path_1.join)(`${__dirname}/../../fonts/Lato-Bold.ttf`);
+    const LatoRegular = (0, path_1.join)(`${__dirname}/../../files/fonts/Lato-Regular.ttf`);
+    const LatoBold = (0, path_1.join)(`${__dirname}/../../files/fonts/Lato-Bold.ttf`);
     (0, folder_1.folder)(filedir);
     const doc = new pdfkit_1.default({ size: "LETTER" });
     doc.pipe(fs_1.default.createWriteStream(pathfile));
@@ -38,4 +38,3 @@ const memberpdf = (names, filedir) => __awaiter(void 0, void 0, void 0, function
     return pathfile;
 });
 exports.memberpdf = memberpdf;
-//# sourceMappingURL=member.js.map

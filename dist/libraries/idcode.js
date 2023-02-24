@@ -14,4 +14,3 @@ const idcode = (model, code) => __awaiter(void 0, void 0, void 0, function* () {
     return res !== null ? res._id : null;
 });
 exports.default = idcode;
-//# sourceMappingURL=idcode.js.map

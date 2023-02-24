@@ -24,4 +24,3 @@ exports.default = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         return res.json({ token: null });
     }
 });
-//# sourceMappingURL=token.js.map

@@ -57,4 +57,3 @@ const churchimagedeletefile = (file, filedir) => __awaiter(void 0, void 0, void 
     }
 });
 exports.churchimagedeletefile = churchimagedeletefile;
-//# sourceMappingURL=churchimage.js.map

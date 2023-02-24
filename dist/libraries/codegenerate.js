@@ -15,4 +15,3 @@ const codegenerate = () => {
     })}`;
 };
 exports.default = codegenerate;
-//# sourceMappingURL=codegenerate.js.map

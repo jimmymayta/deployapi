@@ -10,4 +10,3 @@ const admincode = (code) => {
     return +code1 < +code && +code < +code2 ? true : false;
 };
 exports.default = admincode;
-//# sourceMappingURL=admincode.js.map

@@ -8,4 +8,3 @@ const dategenerate = () => {
     return `${(0, moment_timezone_1.default)().tz("America/La_Paz").format("YYYY-MM-DD HH:mm:ss.SSS")}`;
 };
 exports.default = dategenerate;
-//# sourceMappingURL=dategenerate.js.map
