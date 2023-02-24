@@ -10,7 +10,7 @@ exports.default = {
     uridev: "mongodb://127.0.0.1:27018",
     uripro: "mongodb+srv://iebsnal:xRSih9Jaxiumkvxd@cluster0.vv4yue2.mongodb.net",
     urlapidev: "http://localhost",
-    urlapipro: "https://api-consejo-ministerial.onrender.com",
+    urlapipro: "https://deployapi-production.up.railway.app",
     urlappdev: [
         "http://localhost:5173",
         "http://localhost:4173",

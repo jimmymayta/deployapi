@@ -20,7 +20,7 @@ const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const memberdocumentuploadfile = (file, filedir) => __awaiter(void 0, void 0, void 0, function* () {
     const codefile = (0, codegenerate_1.default)();
     const extension = file.name.split(".")[file.name.split(".").length - 1];
-    const pathfile = path_1.default.join(`${__dirname}/../../${filedir}/${codefile}.${extension}`);
+    const pathfile = path_1.default.join(`${__dirname}/../../files/${filedir}/${codefile}.${extension}`);
     (0, folder_1.folder)(filedir);
     file.mv(pathfile);
     return {
@@ -31,7 +31,7 @@ const memberdocumentuploadfile = (file, filedir) => __awaiter(void 0, void 0, vo
 });
 exports.memberdocumentuploadfile = memberdocumentuploadfile;
 const memberdocumentdeletefile = (file, filedir) => {
-    const docfile = path_1.default.join(`${__dirname}/../../${filedir}/${file}`);
+    const docfile = path_1.default.join(`${__dirname}/../../files/${filedir}/${file}`);
     if (fs_1.default.existsSync(docfile)) {
         fs_1.default.unlinkSync(docfile);
     }

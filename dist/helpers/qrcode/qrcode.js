@@ -16,7 +16,7 @@ const path_1 = __importDefault(require("path"));
 const sharp_1 = __importDefault(require("sharp"));
 const qrcode_1 = __importDefault(require("qrcode"));
 const qrcode = (name, data) => __awaiter(void 0, void 0, void 0, function* () {
-    const qrimage = path_1.default.join(__dirname, `../../images/memberqrcode/${name}.png`);
+    const qrimage = path_1.default.join(__dirname, `../../files/images/memberqrcode/${name}.png`);
     yield qrcode_1.default.toFile(qrimage, data, {
         type: "png",
         margin: 1,

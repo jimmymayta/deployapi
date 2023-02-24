@@ -51,12 +51,18 @@ const membercreate = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         birthdate: birthdate ? birthdate : null,
         married: married ? married : null,
         country: country ? country : null,
-        iddepartment: iddepartment ? yield (0, idcode_1.default)(department_1.default, { departmentcode: iddepartment }) : null,
+        iddepartment: iddepartment
+            ? yield (0, idcode_1.default)(department_1.default, { departmentcode: iddepartment })
+            : null,
         address: address ? address : null,
         datestart: datestart ? datestart : null,
         dateend: dateend ? dateend : null,
-        idchurch: idchurch ? yield (0, idcode_1.default)(church_1.default, { churchcode: idchurch }) : null,
-        iddistrict: iddistrict ? yield (0, idcode_1.default)(district_1.default, { districtcode: iddistrict }) : null,
+        idchurch: idchurch
+            ? yield (0, idcode_1.default)(church_1.default, { churchcode: idchurch })
+            : null,
+        iddistrict: iddistrict
+            ? yield (0, idcode_1.default)(district_1.default, { districtcode: iddistrict })
+            : null,
         membermember: yield (0, idcode_1.default)(member_1.default, { membercode: req.code }),
         datecreate: (0, dategenerate_1.default)(),
     });
@@ -151,7 +157,7 @@ const membergeneratepdf = (req, res) => __awaiter(void 0, void 0, void 0, functi
         pathfile = yield (0, member_2.memberpdf)(memberresult.names, "temp");
     }
     return res.json({
-        membergeneratepdf: pathfile,
+        membergeneratepdf: `${env_1.default.urlapi}/${pathfile}`,
     });
 });
 exports.membergeneratepdf = membergeneratepdf;
@@ -184,13 +190,12 @@ const membergeneratecredential = (req, res) => __awaiter(void 0, void 0, void 0,
             $unwind: "$memberqrcode",
         },
     ]);
-    console.log(memberresult);
     let pathfile = "";
     if (memberresult.length > 0) {
         pathfile = yield (0, membercredential_1.membercredential)(memberresult[0].names, memberresult[0].memberimage.memberimagefile, memberresult[0].memberqrcode.memberqrcodefile, "temp");
     }
     return res.json({
-        membergeneratecredential: pathfile,
+        membergeneratecredential: `${env_1.default.urlapi}/${pathfile}`,
     });
 });
 exports.membergeneratecredential = membergeneratecredential;

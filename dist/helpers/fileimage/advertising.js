@@ -24,7 +24,7 @@ const math = (0, mathjs_1.create)(mathjs_1.all, config);
 const advertisinguploadfile = (file, filedir) => __awaiter(void 0, void 0, void 0, function* () {
     const codename = (0, codegenerate_1.default)();
     const codefile = (0, codegenerate_1.default)();
-    const pathfileimage = path_1.default.join(__dirname, "../../", filedir, `${codefile}.png`);
+    const pathfileimage = path_1.default.join(`${__dirname}/../../files/${filedir}/${codefile}.png`);
     (0, folder_1.folder)(filedir);
     const { width = 0, height = 0 } = yield (0, sharp_1.default)(file.tempFilePath).metadata();
     let ancho = 100;
@@ -32,13 +32,17 @@ const advertisinguploadfile = (file, filedir) => __awaiter(void 0, void 0, void 
     let width1 = math.round(math.evaluate(`(${width}*${ancho})/100`));
     let height1 = math.round(math.evaluate(`(${height}*${alto})/100`));
     if (width === height) {
-        yield (0, sharp_1.default)(file.tempFilePath).resize(width1, height1).toFile(pathfileimage);
+        yield (0, sharp_1.default)(file.tempFilePath)
+            .resize(width1, height1)
+            .toFile(pathfileimage);
     }
     if (width > height) {
         yield (0, sharp_1.default)(file.tempFilePath).resize(width1, width).toFile(pathfileimage);
     }
     if (width < height) {
-        yield (0, sharp_1.default)(file.tempFilePath).resize(height1, height).toFile(pathfileimage);
+        yield (0, sharp_1.default)(file.tempFilePath)
+            .resize(height1, height)
+            .toFile(pathfileimage);
     }
     const { format: imageextension, width: imagewidth, height: imageheight, } = yield (0, sharp_1.default)(pathfileimage).metadata();
     return {
@@ -51,7 +55,7 @@ const advertisinguploadfile = (file, filedir) => __awaiter(void 0, void 0, void 
 });
 exports.advertisinguploadfile = advertisinguploadfile;
 const advertisingdeletefile = (file, filedir) => __awaiter(void 0, void 0, void 0, function* () {
-    const pathfileimage = path_1.default.join(__dirname, "../../", filedir, `${file}`);
+    const pathfileimage = path_1.default.join(`${__dirname}/../../files/${filedir}/${file}`);
     if (fs_1.default.existsSync(pathfileimage)) {
         fs_1.default.unlinkSync(pathfileimage);
     }

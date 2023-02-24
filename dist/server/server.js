@@ -36,6 +36,7 @@ class Server {
         this.app.use((0, cors_1.default)({ origin: env_1.default.urlapp }));
         this.app.use(express_1.default.json({ limit: "100mb" }));
         this.app.use(express_1.default.urlencoded({ extended: false, limit: "100mb" }));
+        this.app.use(express_1.default.static(path_1.default.join(__dirname, '../files')));
         this.app.use((0, express_fileupload_1.default)({
             useTempFiles: true,
             tempFileDir: path_1.default.join(__dirname, "../tmp"),

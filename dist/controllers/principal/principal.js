@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.principalinfo = exports.principalcontact = exports.principalnosotros = exports.principalchurch = exports.principalmain = void 0;
-const path_1 = __importDefault(require("path"));
 const main_1 = __importDefault(require("../../models/main"));
 const mainimage_1 = __importDefault(require("../../models/mainimage"));
 const nosotros_1 = __importDefault(require("../../models/nosotros"));
@@ -37,7 +36,7 @@ const principalmain = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         maincomment: maincomment ? maincomment.maindata : "",
         maindescription: maindescription ? maindescription.maindata : "",
         maindetail: maindetail ? maindetail.maindata : "",
-        mainimage: mainimage.map((e) => path_1.default.join(__dirname, "../../images/mainimage/", e.mainimagefile)),
+        mainimage: mainimage.map((e) => `${env_1.default.urlapi}/images/mainimage/${e.mainimagefile}`),
         tab: ["principalmain", "principalnosotros", "principalcontact"],
         member: false,
     });

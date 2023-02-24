@@ -19,7 +19,8 @@ const folder_1 = require("../../libraries/folder");
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const pdfkit_1 = __importDefault(require("pdfkit"));
 const memberpdf = (names, filedir) => __awaiter(void 0, void 0, void 0, function* () {
-    const pathfile = (0, path_1.join)(`${__dirname}/../../${filedir}/${(0, codegenerate_1.default)()}.pdf`);
+    const file = `${filedir}/${(0, codegenerate_1.default)()}.pdf`;
+    const pathfile = (0, path_1.join)(`${__dirname}/../../files/${file}`);
     const LatoRegular = (0, path_1.join)(`${__dirname}/../../files/fonts/Lato-Regular.ttf`);
     const LatoBold = (0, path_1.join)(`${__dirname}/../../files/fonts/Lato-Bold.ttf`);
     (0, folder_1.folder)(filedir);
@@ -35,6 +36,6 @@ const memberpdf = (names, filedir) => __awaiter(void 0, void 0, void 0, function
         align: "center",
     });
     doc.end();
-    return pathfile;
+    return file;
 });
 exports.memberpdf = memberpdf;

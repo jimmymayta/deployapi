@@ -19,10 +19,11 @@ const folder_1 = require("../../libraries/folder");
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const pdfkit_1 = __importDefault(require("pdfkit"));
 const membercredential = (names, memberimage, memberqrcode, pathdir) => __awaiter(void 0, void 0, void 0, function* () {
-    const imagenmember = (0, path_1.join)(`${__dirname}/../../images/memberimage/${memberimage}`);
-    const imagenqrcode = (0, path_1.join)(`${__dirname}/../../images/memberqrcode/${memberqrcode}`);
-    const pathfile = (0, path_1.join)(`${__dirname}/../../${pathdir}/${(0, codegenerate_1.default)()}.pdf`);
-    const imagecredential = (0, path_1.join)(`${__dirname}/../../files/images/c1.png`);
+    const file = `${(0, codegenerate_1.default)()}.pdf`;
+    const imagenmember = (0, path_1.join)(`${__dirname}/../../files/images/memberimage/${memberimage}`);
+    const imagenqrcode = (0, path_1.join)(`${__dirname}/../../files/images/memberqrcode/${memberqrcode}`);
+    const pathfile = (0, path_1.join)(`${__dirname}/../../files/${pathdir}/${file}`);
+    const imagecredential = (0, path_1.join)(`${__dirname}/../../files/images/imagecredential/c1.png`);
     const LatoRegular = (0, path_1.join)(`${__dirname}/../../files/fonts/Lato-Regular.ttf`);
     const LatoBold = (0, path_1.join)(`${__dirname}/../../files/fonts/Lato-Bold.ttf`);
     (0, folder_1.folder)(pathdir);
@@ -37,6 +38,6 @@ const membercredential = (names, memberimage, memberqrcode, pathdir) => __awaite
         .fillColor("#0d47a1")
         .text(`${names.toUpperCase()}`, 170, 160);
     doc.end();
-    return pathfile;
+    return `${pathdir}/${file}`;
 });
 exports.membercredential = membercredential;

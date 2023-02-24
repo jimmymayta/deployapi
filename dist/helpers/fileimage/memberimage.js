@@ -24,7 +24,8 @@ const math = (0, mathjs_1.create)(mathjs_1.all, config);
 const memberimageuploadfile = (file, filedir) => __awaiter(void 0, void 0, void 0, function* () {
     const codename = (0, codegenerate_1.default)();
     const codefile = (0, codegenerate_1.default)();
-    const pathfileimage = path_1.default.join(__dirname, "../../", filedir, `${codefile}.png`);
+    console.log('estyo aqui');
+    const pathfileimage = path_1.default.join(`${__dirname}/../../files/${filedir}/${codefile}.png`);
     (0, folder_1.folder)(filedir);
     const { width = 0, height = 0 } = yield (0, sharp_1.default)(file.tempFilePath).metadata();
     if (width === height) {
@@ -53,7 +54,7 @@ const memberimageuploadfile = (file, filedir) => __awaiter(void 0, void 0, void 
 });
 exports.memberimageuploadfile = memberimageuploadfile;
 const memberimagedeletefile = (file, filedir) => __awaiter(void 0, void 0, void 0, function* () {
-    const pathfileimage = path_1.default.join(__dirname, "../../", filedir, `${file}`);
+    const pathfileimage = path_1.default.join(__dirname, "../../files/", filedir, `${file}`);
     if (fs_1.default.existsSync(pathfileimage)) {
         fs_1.default.unlinkSync(pathfileimage);
     }
