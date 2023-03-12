@@ -5,7 +5,7 @@ exports.default = {
     apiversion: "3.2.1",
     apibuild: "103",
     apiport: 3000,
-    apiproduction: false,
+    apiproduction: true,
     database: "consejoministerialdatabase",
     uridev: "mongodb://127.0.0.1:27017",
     uripro: "mongodb+srv://iebsnal:xRSih9Jaxiumkvxd@cluster0.vv4yue2.mongodb.net",
