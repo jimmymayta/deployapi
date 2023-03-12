@@ -31,6 +31,7 @@ const memberexpense_1 = __importDefault(require("./memberexpense/memberexpense")
 const memberexpensedata_1 = __importDefault(require("./memberexpensedata/memberexpensedata"));
 const incomeexpense_1 = __importDefault(require("./incomeexpense/incomeexpense"));
 const memberdocument_1 = __importDefault(require("./memberdocument/memberdocument"));
+const memberaccess_1 = __importDefault(require("./memberaccess/memberaccess"));
 exports.default = [
     { routepath: "principal", route: principal_1.default },
     { routepath: "admin", route: admin_1.default },
@@ -60,4 +61,5 @@ exports.default = [
     { routepath: "memberexpense", route: memberexpense_1.default },
     { routepath: "memberexpensedata", route: memberexpensedata_1.default },
     { routepath: "incomeexpense", route: incomeexpense_1.default },
+    { routepath: "memberaccess", route: memberaccess_1.default },
 ];

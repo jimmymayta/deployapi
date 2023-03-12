@@ -44,10 +44,13 @@ const admin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             memberaccesscode: (0, codegenerate_1.default)(),
             memberaccessnumber: e.number,
             memberaccessname: e.name,
+            memberaccessdata: e.data,
             memberaccesscreate: true,
             memberaccessupdate: true,
             memberaccessdelete: true,
-            memberaccesslevel: "national",
+            memberaccesslevelnumber: "4",
+            memberaccesslevelname: "national",
+            memberaccessleveldata: "Nivel Nacional",
             idmember: memberdata._id,
         };
     });

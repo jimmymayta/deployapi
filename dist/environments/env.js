@@ -14,5 +14,6 @@ exports.default = {
     uri: environment_1.default.apiproduction ? environment_1.default.uripro : environment_1.default.uridev,
     urlapi: environment_1.default.apiproduction ? environment_1.default.urlapipro : `${environment_1.default.urlapidev}:${environment_1.default.apiport}`,
     urlapp: environment_1.default.apiproduction ? environment_1.default.urlapppro : environment_1.default.urlappdev,
-    keysecret: environment_1.default.keysecret,
+    jwtkeysecret: environment_1.default.jwtkeysecret,
+    jwtexpire: environment_1.default.jwtexpire
 };

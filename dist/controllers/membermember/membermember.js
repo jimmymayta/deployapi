@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.membermember = void 0;
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const member_1 = __importDefault(require("../../models/member"));
 const membermember = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const memberresult = yield member_1.default.aggregate([
@@ -37,9 +38,9 @@ const membermember = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             },
         },
     ]);
-    console.log(memberresult[0].memberaccess);
     return res.json({
         member: memberresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "membermember")
     });
 });
 exports.membermember = membermember;

@@ -19,12 +19,14 @@ const memberdocument_2 = require("../../helpers/filedocument/memberdocument");
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const memberdocument = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const memberdocumentresult = yield memberdocument_1.default.find({
         state: "activated",
     });
     return res.json({
         memberdocument: memberdocumentresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "memberdocument")
     });
 });
 exports.memberdocument = memberdocument;

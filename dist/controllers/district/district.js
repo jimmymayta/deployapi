@@ -18,10 +18,16 @@ const district_1 = __importDefault(require("../../models/district"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const district = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const districtresult = yield district_1.default.find({ state: "activated" });
+    const districtresult = yield district_1.default.find({ state: "activated" })
+        .select("_id districtcode districtname")
+        .sort({
+        districtname: "asc",
+    });
     return res.json({
         district: districtresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "district"),
     });
 });
 exports.district = district;

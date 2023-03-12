@@ -20,10 +20,12 @@ const churchimage_2 = require("../../helpers/fileimage/churchimage");
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const churchimage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const churchresult = yield churchimage_1.default.find({ state: "activated" });
     return res.json({
         churchimage: churchresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "churchimage")
     });
 });
 exports.churchimage = churchimage;

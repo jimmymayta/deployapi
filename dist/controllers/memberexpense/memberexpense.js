@@ -19,9 +19,11 @@ const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const expense_1 = __importDefault(require("../../models/expense"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const memberexpense = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.json({
         memberexpense: yield memberexpense_1.default.find({ state: "activated" }),
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "memberexpense")
     });
 });
 exports.memberexpense = memberexpense;

@@ -18,6 +18,7 @@ const member_1 = __importDefault(require("../../models/member"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const departmentname = (code) => __awaiter(void 0, void 0, void 0, function* () {
     const department = yield department_1.default.findOne({
         departmentcode: code,
@@ -25,9 +26,14 @@ const departmentname = (code) => __awaiter(void 0, void 0, void 0, function* () 
     return department === null || department === void 0 ? void 0 : department.departmentname;
 });
 const department = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const departmentresult = yield department_1.default.find({ state: "activated" });
+    const departmentresult = yield department_1.default.find({ state: "activated" })
+        .select("_id departmentcode departmentname departmentabbreviation")
+        .sort({
+        departmentname: "asc",
+    });
     return res.json({
         department: departmentresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "department"),
     });
 });
 exports.department = department;
@@ -51,7 +57,9 @@ const departmentupdate = (req, res) => __awaiter(void 0, void 0, void 0, functio
     const { departmentname, departmentabbreviation } = req.body;
     yield department_1.default.findOneAndUpdate({ departmentcode: code }, {
         departmentname: departmentname ? departmentname : null,
-        departmentabbreviation: departmentabbreviation ? departmentabbreviation : null,
+        departmentabbreviation: departmentabbreviation
+            ? departmentabbreviation
+            : null,
         membermember: yield (0, idcode_1.default)(member_1.default, { membercode: req.code }),
         dateupdate: (0, dategenerate_1.default)(),
     });

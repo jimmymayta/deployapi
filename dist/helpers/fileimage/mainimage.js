@@ -22,6 +22,15 @@ const mainimageuploadfile = (file, filedir) => __awaiter(void 0, void 0, void 0,
     const codename = (0, codegenerate_1.default)();
     const codefile = (0, codegenerate_1.default)();
     const pathfileimage = path_1.default.join(__dirname, "../../files/", filedir, `${codefile}.png`);
+    if (file === null) {
+        return {
+            imagename: '',
+            imagefile: '',
+            imagewidth: "",
+            imageheight: "",
+            imageextension: "",
+        };
+    }
     (0, folder_1.folder)(filedir);
     const { width = 0, height = 0 } = yield (0, sharp_1.default)(file.tempFilePath).metadata();
     if (width === height) {

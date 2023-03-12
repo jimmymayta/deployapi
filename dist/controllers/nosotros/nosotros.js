@@ -13,11 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nosotros = void 0;
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const nosotros_1 = __importDefault(require("../../models/nosotros"));
 const nosotros = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const nosotros = yield nosotros_1.default.find();
     return res.json({
         nosotros,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "nosotros")
     });
 });
 exports.nosotros = nosotros;

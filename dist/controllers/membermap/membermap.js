@@ -18,9 +18,11 @@ const membermap_1 = __importDefault(require("../../models/membermap"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const membermap = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.json({
         membermap: yield membermap_1.default.find({ state: "activated" }),
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "membermap")
     });
 });
 exports.membermap = membermap;

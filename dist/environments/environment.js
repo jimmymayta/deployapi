@@ -3,11 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     apiname: "api",
     apiversion: "3.2.1",
-    apibuild: "106",
+    apibuild: "103",
     apiport: 3000,
-    apiproduction: true,
+    apiproduction: false,
     database: "consejoministerialdatabase",
-    uridev: "mongodb://127.0.0.1:27018",
+    uridev: "mongodb://127.0.0.1:27017",
     uripro: "mongodb+srv://iebsnal:xRSih9Jaxiumkvxd@cluster0.vv4yue2.mongodb.net",
     urlapidev: "http://localhost",
     urlapipro: "https://deployapi-production.up.railway.app",
@@ -23,5 +23,6 @@ exports.default = {
         "https://iebs.000webhostapp.com",
         "http://localhost:5173",
     ],
-    keysecret: 'Tm2TNR&7x7%e59Bwq$X'
+    jwtkeysecret: 'Tm2TNR&7x7%e59Bwq$X',
+    jwtexpire: '1h'
 };

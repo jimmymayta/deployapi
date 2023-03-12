@@ -18,6 +18,7 @@ exports.default = (req, res, next) => __awaiter(void 0, void 0, void 0, function
             return res.json({ token: null });
         }
         req.code = data.code;
+        console.log({ datacode: data.code });
         next();
     }
     catch (error) {

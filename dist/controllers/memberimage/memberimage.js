@@ -19,10 +19,12 @@ const memberimage_2 = require("../../helpers/fileimage/memberimage");
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const memberimage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const memberimageresult = yield memberimage_1.default.find({ state: "activated" });
     return res.json({
         memberimage: memberimageresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "memberimage")
     });
 });
 exports.memberimage = memberimage;

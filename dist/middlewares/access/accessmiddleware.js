@@ -12,9 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mainmiddleware = exports.accessmiddleware = void 0;
+exports.accessmembermiddleware = void 0;
 const member_1 = __importDefault(require("../../models/member"));
-const accessmiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const accessmembermiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const memberresult = yield member_1.default.aggregate([
         {
             $match: { membercode: req.code },
@@ -30,21 +30,4 @@ const accessmiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, f
     ]);
     next();
 });
-exports.accessmiddleware = accessmiddleware;
-const mainmiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const memberresult = yield member_1.default.aggregate([
-        {
-            $match: { membercode: req.code },
-        },
-        {
-            $lookup: {
-                from: "memberaccess",
-                localField: "_id",
-                foreignField: "idmember",
-                as: "memberaccess",
-            },
-        },
-    ]);
-    next();
-});
-exports.mainmiddleware = mainmiddleware;
+exports.accessmembermiddleware = accessmembermiddleware;

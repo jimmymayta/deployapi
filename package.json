@@ -6,12 +6,9 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "nodemon dist/app.js",
-    "dev:files": "concurrently \"npm run fonts\" \"npm run assets\"",
-    "dev:start": "concurrently \"tsc -w\" \"npm run dev\" \"npm run fonts\"",
-    "clean": "rm -fr dist",
-    "fonts":"cp -r src/fonts dist/",
-    "assets":"cp -r src/assets dist/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:start": "concurrently \"npx tsc -w\" \"npm run files\" \"npm run dev\"",
+    "files": "cp -r src/files dist/",
+    "clean": "rm -fr dist"
   },
   "keywords": [],
   "author": "",
@@ -42,6 +39,7 @@
     "@types/qrcode": "^1.5.0",
     "@types/sharp": "^0.31.1",
     "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20",
     "typescript": "^4.9.5"
   }
 }

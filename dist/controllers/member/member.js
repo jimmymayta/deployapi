@@ -29,14 +29,24 @@ const folder_1 = require("../../libraries/folder");
 const env_1 = __importDefault(require("../../environments/env"));
 const qrcode_1 = __importDefault(require("../../helpers/qrcode/qrcode"));
 const accessverify_1 = require("../../helpers/access/accessverify");
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const member = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const memberresult = yield member_1.default.find({ state: "activated" });
     return res.json({
         member: memberresult,
         tab: yield (0, accessverify_1.accessverify)(req.code || ""),
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "member")
     });
 });
 exports.member = member;
+const memberpersonal = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const memberresult = yield member_1.default.findOne({ membercode: req.code });
+    return res.json({
+        member: memberresult,
+        tab: yield (0, accessverify_1.accessverify)(req.code || ""),
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "member")
+    });
+});
 const membercreate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { names, firstlastname, secondlastname, gender, identitycard, email, cellular, birthdate, married, country, iddepartment, address, datestart, dateend, idchurch, iddistrict, } = req.body;
     const membermodel = new member_1.default({
@@ -72,14 +82,18 @@ const membercreate = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             memberaccesscode: (0, codegenerate_1.default)(),
             memberaccessnumber: e.number,
             memberaccessname: e.name,
-            memberaccesscreate: true,
+            memberaccessdata: e.data,
+            memberaccesscreate: false,
             memberaccessupdate: false,
-            memberaccessdelete: true,
-            memberaccesslevel: "personal",
+            memberaccessdelete: false,
+            memberaccesslevelnumber: 1,
+            memberaccesslevelname: "personal",
+            memberaccessleveldata: "Nivel Personal",
             idmember: memberresult._id,
+            datecreate: (0, dategenerate_1.default)()
         };
     });
-    yield memberaccess_1.default.insertMany(accessdata.filter((e) => [4, 5].includes(e.memberaccessnumber)));
+    yield memberaccess_1.default.insertMany(accessdata.filter((e) => ['member', 'church'].includes(e.memberaccessname)));
     (0, folder_1.folder)("/images/memberqrcode");
     const qrname = (0, codegenerate_1.default)();
     const qrdata = `${env_1.default.urlapi}/code/${memberresult.membercode}`;

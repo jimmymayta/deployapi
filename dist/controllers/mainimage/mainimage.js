@@ -13,35 +13,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mainimagedelete = exports.mainimageupdate = exports.mainimagecreate = exports.mainimage = void 0;
-const path_1 = __importDefault(require("path"));
 const member_1 = __importDefault(require("../../models/member"));
 const mainimage_1 = __importDefault(require("../../models/mainimage"));
 const mainimage_2 = require("../../helpers/fileimage/mainimage");
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
+const filecontent_1 = __importDefault(require("../../helpers/filecontent/filecontent"));
 const mainimage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const mainimageresult = yield mainimage_1.default.find({ state: "activated" });
+    const mainimageresult = yield mainimage_1.default.find({ state: "activated" }, {
+        _id: 0,
+        mainimagecode: 1,
+        mainimagetitle: 1,
+        mainimagedescription: 1,
+        mainimagenumber: 1,
+        mainimagefile: 1,
+    }).sort({ mainimagenumber: "asc" });
+    mainimageresult.forEach((mainimage) => (mainimage["mainimagefile"] = (0, filecontent_1.default)("images/mainimage", mainimage.mainimagefile)));
     return res.json({
-        mainimageresult: mainimageresult.map((e) => {
-            return {
-                mainimagecode: e.mainimagecode,
-                mainimagetitle: e.mainimagetitle,
-                mainimagedescription: e.mainimagedescription,
-                mainimagefile: path_1.default.join(__dirname, "../../images/mainimage", e.mainimagefile),
-            };
-        }),
+        mainimage: mainimageresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "mainimage"),
     });
 });
 exports.mainimage = mainimage;
 const mainimagecreate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { title, description } = req.body;
+    const { mainimagetitle, mainimagedescription, mainimagenumber } = req.body;
     const { file } = req.files || { file: null };
-    const { imagename, imagefile, imagewidth, imageheight, imageextension } = yield (0, mainimage_2.mainimageuploadfile)(file, 'images/mainimage');
+    const { imagename, imagefile, imagewidth, imageheight, imageextension } = yield (0, mainimage_2.mainimageuploadfile)(file, "images/mainimage");
     const mainimage = new mainimage_1.default({
         mainimagecode: (0, codegenerate_1.default)(),
-        mainimagetitle: title,
-        mainimagedescription: description,
+        mainimagetitle: mainimagetitle ? mainimagetitle : "",
+        mainimagedescription: mainimagedescription ? mainimagedescription : "",
+        mainimagenumber: mainimagenumber ? mainimagenumber : "",
         mainimagename: imagename,
         mainimagefile: imagefile,
         mainimagewidth: imagewidth,
@@ -58,24 +62,33 @@ const mainimagecreate = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.mainimagecreate = mainimagecreate;
 const mainimageupdate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { code } = req.params;
-    const { title, description } = req.body;
-    const { file } = req.files || { file: null };
-    const { imagename, imagefile, imagewidth, imageheight, imageextension } = yield (0, mainimage_2.mainimageuploadfile)(file, 'images/mainimage');
+    const { mainimagetitle, mainimagedescription, mainimagenumber } = req.body;
     const mainimageresult = yield mainimage_1.default.findOneAndUpdate({
         mainimagecode: code,
     }, {
-        mainimagetitle: title,
-        mainimagedescription: description,
-        mainimagename: imagename,
-        mainimagefile: imagefile,
-        mainimagewidth: imagewidth,
-        mainimageheight: imageheight,
-        mainimageextension: imageextension,
+        mainimagetitle: mainimagetitle ? mainimagetitle : "",
+        mainimagedescription: mainimagedescription ? mainimagedescription : "",
+        mainimagenumber: mainimagenumber ? mainimagenumber : "",
         membermember: yield (0, idcode_1.default)(member_1.default, { membercode: req.code }),
         dateupdate: (0, dategenerate_1.default)(),
     });
-    if (mainimageresult !== null) {
-        (0, mainimage_2.mainimagedeletefile)(mainimageresult.mainimagefile, 'images/mainimage');
+    const { file } = req.files || { file: null };
+    if (file !== null) {
+        const { imagename, imagefile, imagewidth, imageheight, imageextension } = yield (0, mainimage_2.mainimageuploadfile)(file, "images/mainimage");
+        const mainimageresult = yield mainimage_1.default.findOneAndUpdate({
+            mainimagecode: code,
+        }, {
+            mainimagename: imagename,
+            mainimagefile: imagefile,
+            mainimagewidth: imagewidth,
+            mainimageheight: imageheight,
+            mainimageextension: imageextension,
+            membermember: yield (0, idcode_1.default)(member_1.default, { membercode: req.code }),
+            dateupdate: (0, dategenerate_1.default)(),
+        });
+        if (mainimageresult !== null) {
+            (0, mainimage_2.mainimagedeletefile)(mainimageresult.mainimagefile, "images/mainimage");
+        }
     }
     return res.json({
         mainimage: yield mainimage_1.default.findOne({ mainimagecode: code }),
@@ -92,7 +105,7 @@ const mainimagedelete = (req, res) => __awaiter(void 0, void 0, void 0, function
         datedelete: (0, dategenerate_1.default)(),
     });
     if (mainimageresult !== null) {
-        (0, mainimage_2.mainimagedeletefile)(mainimageresult.mainimagefile, 'images/mainimage');
+        (0, mainimage_2.mainimagedeletefile)(mainimageresult.mainimagefile, "images/mainimage");
     }
     return res.json({
         mainimage: yield mainimage_1.default.findOne({ mainimagecode: code }),

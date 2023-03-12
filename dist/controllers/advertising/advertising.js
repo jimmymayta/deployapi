@@ -19,10 +19,20 @@ const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
 const advertising_2 = require("../../helpers/fileimage/advertising");
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
+const filecontent_1 = __importDefault(require("../../helpers/filecontent/filecontent"));
 const advertising = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const advertisingresult = yield advertising_1.default.find({ state: "activated" });
+    const advertisingresult = yield advertising_1.default.find({ state: "activated" })
+        .select("-_id advertisingcode advertisingname advertisingdata advertisingdescription advertisingimagename advertisingimagefile advertisingimageextension advertisingurl")
+        .sort({
+        advertisingcode: "desc",
+    });
+    for (let advertising of advertisingresult) {
+        advertising["advertisingimagefile"] = (0, filecontent_1.default)("images/advertising", advertising.advertisingimagefile);
+    }
     return res.json({
         advertising: advertisingresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "advertising"),
     });
 });
 exports.advertising = advertising;
@@ -32,9 +42,9 @@ const advertisingcreate = (req, res) => __awaiter(void 0, void 0, void 0, functi
     const { imagename, imagefile, imagewidth, imageheight, imageextension } = yield (0, advertising_2.advertisinguploadfile)(file, "images/advertising");
     const advertising = new advertising_1.default({
         advertisingcode: (0, codegenerate_1.default)(),
-        advertisingname,
-        advertisingdata,
-        advertisingdescription,
+        advertisingname: advertisingname ? advertisingname : '',
+        advertisingdata: advertisingdata ? advertisingdata : '',
+        advertisingdescription: advertisingdescription ? advertisingdescription : '',
         advertisingimagename: imagename,
         advertisingimagefile: imagefile,
         advertisingimagewidth: imagewidth,
@@ -54,12 +64,10 @@ const advertisingupdate = (req, res) => __awaiter(void 0, void 0, void 0, functi
     const { code } = req.params;
     const { advertisingname, advertisingdata, advertisingdescription, advertisingurl, } = req.body;
     yield advertising_1.default.findOneAndUpdate({ advertisingcode: code }, {
-        advertisingname: advertisingname ? advertisingname : null,
-        advertisingdata: advertisingdata ? advertisingdata : null,
-        advertisingdescription: advertisingdescription
-            ? advertisingdescription
-            : null,
-        advertisingurl: advertisingurl ? advertisingurl : null,
+        advertisingname: advertisingname ? advertisingname : '',
+        advertisingdata: advertisingdata ? advertisingdata : '',
+        advertisingdescription: advertisingdescription ? advertisingdescription : '',
+        advertisingurl: advertisingurl ? advertisingurl : '',
         membermember: yield (0, idcode_1.default)(member_1.default, { membercode: req.code }),
         dateupdate: (0, dategenerate_1.default)(),
     });

@@ -21,6 +21,7 @@ const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const member_1 = __importDefault(require("../../models/member"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
 const accessverify_1 = require("../../helpers/access/accessverify");
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const main = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const [maintitle, maincomment, maindescription, maindetail, mainimage] = yield Promise.all([
         main_1.default.findOne({ mainname: datamain_1.default.maintitle }),
@@ -34,7 +35,8 @@ const main = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         maincomment: maincomment !== null ? maincomment.maindata : "",
         maindescription: maindescription !== null ? maindescription.maindata : "",
         maindetail: maindetail !== null ? maindetail.maindata : "",
-        tab: yield (0, accessverify_1.accessverify)(req.code || '')
+        tab: yield (0, accessverify_1.accessverify)(req.code || ''),
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "main")
     });
 });
 exports.main = main;

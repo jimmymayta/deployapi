@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.churchdelete = exports.churchupdate = exports.churchcreate = exports.church = void 0;
+exports.churchdelete = exports.churchupdate = exports.churchcreate = exports.churchcode = exports.church = void 0;
 const church_1 = __importDefault(require("../../models/church"));
 const district_1 = __importDefault(require("../../models/district"));
 const department_1 = __importDefault(require("../../models/department"));
@@ -20,19 +20,40 @@ const member_1 = __importDefault(require("../../models/member"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const church = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const churchresult = yield church_1.default.find({ state: "activated" });
+    let temp = yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "church");
+    console.log({ nivel: temp.level });
+    const churchresult = yield church_1.default.find({ state: "activated" })
+        .select("_id churchcode churchname churchaddress iddistrict iddepartment")
+        .sort({
+        churchname: "asc",
+    });
     return res.json({
         church: churchresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "church"),
     });
 });
 exports.church = church;
+const churchcode = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { code } = req.params;
+    const churchresult = yield church_1.default.findOne({ churchcode: code, state: "activated" })
+        .select("-_id churchcode churchname churchaddress iddistrict iddepartment")
+        .sort({
+        churchname: "asc",
+    });
+    return res.json({
+        church: churchresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "church"),
+    });
+});
+exports.churchcode = churchcode;
 const churchcreate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { churchname, churchaddress, iddistrict, iddepartment } = req.body;
     const churchmodel = new church_1.default({
         churchcode: (0, codegenerate_1.default)(),
-        churchname: churchname ? churchname : null,
-        churchaddress: churchaddress ? churchaddress : null,
+        churchname: churchname ? churchname : '',
+        churchaddress: churchaddress ? churchaddress : '',
         iddistrict: yield (0, idcode_1.default)(district_1.default, { districtcode: iddistrict }),
         iddepartment: yield (0, idcode_1.default)(department_1.default, {
             departmentcode: iddepartment,
@@ -52,8 +73,12 @@ const churchupdate = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     yield church_1.default.findOneAndUpdate({
         churchname: churchname ? churchname : null,
         churchaddress: churchaddress ? churchaddress : null,
-        iddistrict: iddistrict ? yield (0, idcode_1.default)(district_1.default, { districtcode: iddistrict }) : null,
-        iddepartment: iddepartment ? yield (0, idcode_1.default)(department_1.default, { departmentcode: iddepartment }) : null,
+        iddistrict: iddistrict
+            ? yield (0, idcode_1.default)(district_1.default, { districtcode: iddistrict })
+            : null,
+        iddepartment: iddepartment
+            ? yield (0, idcode_1.default)(department_1.default, { departmentcode: iddepartment })
+            : null,
     });
     return res.json({
         church: yield church_1.default.findOne({ churchcode: code }),

@@ -26,6 +26,14 @@ const MemberAccessSchema = new mongoose_1.Schema({
         default: null,
         required: [false, "Member Access Name"],
     },
+    memberaccessdata: {
+        type: String,
+        lowercase: true,
+        trim: true,
+        unique: false,
+        default: null,
+        required: [false, "Member Access Data"],
+    },
     memberaccesscreate: {
         type: Boolean,
         lowercase: true,
@@ -50,13 +58,29 @@ const MemberAccessSchema = new mongoose_1.Schema({
         default: false,
         required: [true, "Permit Access Delete"],
     },
-    memberaccesslevel: {
+    memberaccesslevelnumber: {
         type: String,
         lowercase: true,
         trim: true,
         unique: false,
-        default: false,
-        required: [true, "Member Access Level"],
+        default: 1,
+        required: [false, "Member Access Level Number"],
+    },
+    memberaccesslevelname: {
+        type: String,
+        lowercase: true,
+        trim: true,
+        unique: false,
+        default: "personal",
+        required: [false, "Member Access Level Name"],
+    },
+    memberaccessleveldata: {
+        type: String,
+        lowercase: true,
+        trim: true,
+        unique: false,
+        default: 'nivel personal',
+        required: [false, "Member Access Level Data"],
     },
     idmember: {
         type: mongoose_1.Schema.Types.ObjectId,

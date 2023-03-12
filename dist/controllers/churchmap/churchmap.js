@@ -19,10 +19,12 @@ const member_1 = __importDefault(require("../../models/member"));
 const codegenerate_1 = __importDefault(require("../../libraries/codegenerate"));
 const dategenerate_1 = __importDefault(require("../../libraries/dategenerate"));
 const idcode_1 = __importDefault(require("../../libraries/idcode"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const churchmap = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const churchmapresult = yield churchmap_1.default.find({ state: "activated" });
     return res.json({
         churchmap: churchmapresult,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "churchmap")
     });
 });
 exports.churchmap = churchmap;

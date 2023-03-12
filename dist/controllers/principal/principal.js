@@ -23,6 +23,7 @@ const datacontact_1 = __importDefault(require("../../data/datacontact"));
 const dataamemberccess_1 = require("../../data/dataamemberccess");
 const dataadmin_1 = __importDefault(require("../../data/dataadmin"));
 const env_1 = __importDefault(require("../../environments/env"));
+const datainfomemberaccess_1 = require("../../helpers/datainfomemberaccess/datainfomemberaccess");
 const principalmain = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const [maintitle, maincomment, maindescription, maindetail, mainimage] = yield Promise.all([
         main_1.default.findOne({ mainname: datamain_1.default.maintitle }),
@@ -37,14 +38,14 @@ const principalmain = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         maindescription: maindescription ? maindescription.maindata : "",
         maindetail: maindetail ? maindetail.maindata : "",
         mainimage: mainimage.map((e) => `${env_1.default.urlapi}/images/mainimage/${e.mainimagefile}`),
-        tab: ["principalmain", "principalnosotros", "principalcontact"],
-        member: false,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "principalmain")
     });
 });
 exports.principalmain = principalmain;
 const principalchurch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return res.json({
         maintitle: "Iglesia",
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "principalchurch")
     });
 });
 exports.principalchurch = principalchurch;
@@ -65,6 +66,7 @@ const principalnosotros = (req, res) => __awaiter(void 0, void 0, void 0, functi
         nosotroscomment,
         nosotrosdescription,
         nosotrosdetail,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "principalnosotros")
     });
 });
 exports.principalnosotros = principalnosotros;
@@ -85,6 +87,7 @@ const principalcontact = (req, res) => __awaiter(void 0, void 0, void 0, functio
         contactcomment,
         contactdescription,
         contactdetail,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "principalcontact")
     });
 });
 exports.principalcontact = principalcontact;
@@ -92,6 +95,7 @@ const principalinfo = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     return res.json({
         dataadmin: dataadmin_1.default,
         date: env_1.default.apibuild,
+        datainfo: yield (0, datainfomemberaccess_1.datainfomemberaccess)(req.code || "", "principalinfo")
     });
 });
 exports.principalinfo = principalinfo;
